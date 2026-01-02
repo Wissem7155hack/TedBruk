@@ -1,14 +1,14 @@
 {
-  "name": "Castor Finishing",
+  "name": "TedBruk",
   "private": true,
   "predeploy": "npm run build",
   "deploy": "gh-pages -d dist --dotfiles",
   "version": "0.0.0",
   "type": "module",
-  "homepage": "http://wissem7155hack.github.io/Castor-Finishing/",
+  "homepage": "http://wissem7155hack.github.io/TedBruk/",
   "repository": {
     "type": "git",
-    "url": "https://github.com/Wissem7155hack/Castor-Finishing.git"
+    "url": "https://github.com/Wissem7155hack/TedBruk"
   },
   "scripts": {
     "dev": "vite",

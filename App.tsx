@@ -3,26 +3,34 @@ import { HashRouter as Router, Routes, Route, Link, useLocation, useParams } fro
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import {
-  ArrowRight, Leaf, PencilRuler, Shovel, CheckCircle, Play, Loader2, Send, Phone,
+  ArrowRight, Leaf, PencilRuler, Shovel, CheckCircle, Play, Loader2, Send, Phone, ArrowDown,
   Maximize2, MapPin, Clock, Quote, Star
 } from 'lucide-react';
 import { NavigationLinks, ProjectImage, BlogPost } from './types';
 
 // Import blog images
-import img1 from './images/1.png';
-import img2 from './images/2.png';
-import img3 from './images/3.png';
-import img4 from './images/4.png';
-import img5 from './images/5.png';
-import img6 from './images/6.png';
-import img7 from './images/7.png';
+import img1 from './images/1.jpg';
 
-import img8 from './images/8.png';
+import img2 from './images/2.jpg';
+import img3 from './images/3.jpg';
+import img4 from './images/4.jpg';
+import img5 from './images/5.jpg';
+import img6 from './images/6.jpg';
+import img7 from './images/7.jpg';
+
+import img8 from './images/8.jpg';
 
 import img9 from './images/moroccan-flower.png';
-import img10 from './images/9.png';
-import img11 from './images/10.png';
-import img12 from './images/logo.jpg';
+import img10 from './images/9.jpg';
+import img11 from './images/10.jpg';
+import img12 from './images/11.jpg';
+import img13 from './images/arrows.png';
+import img14 from './images/pattern.png';
+import img15 from './images/12.jpg';
+import img20 from './images/back.jpeg';
+
+
+
 
 
 
@@ -369,7 +377,12 @@ const SectionTitle: React.FC<{ subtitle: string; title: string; align?: 'left' |
 );
 
 // Kontaktformular Komponente
-const ContactForm = () => {
+interface ContactFormProps {
+  variant?: 'dark' | 'light';
+  showLogo?: boolean;
+}
+
+const ContactForm: React.FC<ContactFormProps> = ({ variant = 'dark', showLogo = false }) => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [showPopup, setShowPopup] = useState(false);
 
@@ -380,7 +393,7 @@ const ContactForm = () => {
     const formData = new FormData(form);
 
     // Web3Forms Access Key
-    formData.append("access_key", "");
+    formData.append("access_key", "YOUR_ACCESS_KEY_HERE"); // Ensure you have a valid key or keep existing logic if it was empty
 
     try {
       const response = await fetch("https://api.web3forms.com/submit", {
@@ -405,71 +418,87 @@ const ContactForm = () => {
     }
   };
 
+  const bgColor = variant === 'light' ? 'bg-white' : 'bg-black';
+  const textColor = variant === 'light' ? 'text-earth-900' : 'text-white';
+  const labelColor = variant === 'light' ? 'text-earth-900' : 'text-white';
+  const inputBg = variant === 'light' ? 'bg-gray-50' : 'bg-white';
+  const inputBorder = variant === 'light' ? 'border border-gray-200' : '';
+
   return (
     <>
-      <div className="bg-black p-6 md:p-8 rounded-xl shadow-2xl w-full max-w-md mx-auto lg:mx-0">
-        <h3 className="text-2xl md:text-3xl font-black text-white text-center mb-6 md:mb-8 uppercase font-sans">
-          Free Consultation
+      <div className={`${bgColor} p-6 md:p-8 rounded-xl shadow-2xl w-full max-w-md mx-auto lg:mx-0 transition-colors duration-300`}>
+        {showLogo && (
+          <div className="flex justify-center mb-6">
+            <img
+              src={img12}
+              alt="Our Team"
+              className="relative w-32 h-32 md:w-48 md:h-48 rounded-full object-cover border-4 border-white shadow-2xl"
+            />
+          </div>
+        )}
+        <h3 className={`text-2xl md:text-3xl font-black ${textColor} text-center mb-6 md:mb-8 uppercase font-sans`}>
+          Kostenlose Beratung!
         </h3>
+
 
         <form onSubmit={handleSubmit} className="space-y-4">
 
           {/* Name Field */}
           <div>
-            <label htmlFor="name" className="block text-white font-bold text-sm mb-1">
-              Full Name *
+            <label htmlFor="name" className={`block ${labelColor} font-bold text-sm mb-1`}>
+              Name *
             </label>
             <input
               id="name"
               type="text"
               name="name"
-              placeholder="John Doe"
-              className="w-full p-3 rounded-md text-gray-900 focus:outline-none focus:ring-2 focus:ring-green-500 text-base"
+              placeholder="Ihr Name"
+              className={`w-full p-3 rounded-md ${inputBg} ${inputBorder} text-gray-900 focus:outline-none focus:ring-2 focus:ring-green-500 text-base`}
               required
             />
           </div>
 
           {/* Phone Field */}
           <div>
-            <label htmlFor="phone" className="block text-white font-bold text-sm mb-1">
-              Phone *
+            <label htmlFor="phone" className={`block ${labelColor} font-bold text-sm mb-1`}>
+              Telefon *
             </label>
             <input
               id="phone"
               type="tel"
               name="phone"
-              placeholder="+1 (204) 123-4567"
-              className="w-full p-3 rounded-md text-gray-900 focus:outline-none focus:ring-2 focus:ring-green-500 text-base"
+              placeholder="+48 123 456789"
+              className={`w-full p-3 rounded-md ${inputBg} ${inputBorder} text-gray-900 focus:outline-none focus:ring-2 focus:ring-green-500 text-base`}
               required
             />
           </div>
 
           {/* City Field */}
           <div>
-            <label htmlFor="city" className="block text-white font-bold text-sm mb-1">
-              City *
+            <label htmlFor="city" className={`block ${labelColor} font-bold text-sm mb-1`}>
+              Stadt *
             </label>
             <input
               id="city"
               type="text"
               name="city"
-              placeholder="Winkler"
-              className="w-full p-3 rounded-md text-gray-900 focus:outline-none focus:ring-2 focus:ring-green-500 text-base"
+              placeholder="Cottbus"
+              className={`w-full p-3 rounded-md ${inputBg} ${inputBorder} text-gray-900 focus:outline-none focus:ring-2 focus:ring-green-500 text-base`}
               required
             />
           </div>
 
           {/* Message Field */}
           <div>
-            <label htmlFor="message" className="block text-white font-bold text-sm mb-1">
-              Project Description *
+            <label htmlFor="message" className={`block ${labelColor} font-bold text-sm mb-1`}>
+              Projektbeschreibung *
             </label>
             <textarea
               id="message"
               name="message"
-              placeholder="Your message..."
+              placeholder="Ihre Nachricht..."
               rows={3}
-              className="w-full p-3 rounded-md text-gray-900 focus:outline-none focus:ring-2 focus:ring-green-500 text-sm resize-none"
+              className={`w-full p-3 rounded-md ${inputBg} ${inputBorder} text-gray-900 focus:outline-none focus:ring-2 focus:ring-green-500 text-sm resize-none`}
               required
             />
           </div>
@@ -482,16 +511,16 @@ const ContactForm = () => {
               className="mt-1"
               required
             />
-            <label htmlFor="agb" className="text-xs text-gray-300">
-              I agree to the{' '}
+            <label htmlFor="agb" className={`text-xs ${variant === 'light' ? 'text-gray-600' : 'text-gray-300'}`}>
+              Ich stimme den{' '}
               <a
                 href="/agb"
                 className="text-green-500 underline hover:text-green-400 transition-colors"
                 onClick={(e) => e.stopPropagation()}
               >
-                Terms
+                AGB
               </a>{' '}
-              and allow contact.
+              zu und erlaube die Kontaktaufnahme.
             </label>
           </div>
 
@@ -504,10 +533,10 @@ const ContactForm = () => {
             {isSubmitting ? (
               <>
                 <Loader2 className="animate-spin mr-2 h-5 w-5" />
-                Sending...
+                Wird gesendet...
               </>
             ) : (
-              'Send Request'
+              'Anfrage senden'
             )}
           </button>
         </form>
@@ -529,16 +558,16 @@ const ContactForm = () => {
               <CheckCircle className="w-10 h-10" />
             </div>
 
-            <h3 className="text-2xl font-bold text-gray-900 mb-2 font-serif">Thank You!</h3>
+            <h3 className="text-2xl font-bold text-gray-900 mb-2 font-serif">Vielen Dank!</h3>
             <p className="text-gray-600 mb-8 leading-relaxed">
-              We have received your request. Our team will contact you shortly.
+              Wir haben Ihre Anfrage erhalten. Unser Team wird sich in Kürze bei Ihnen melden.
             </p>
 
             <button
               onClick={() => setShowPopup(false)}
               className="w-full bg-[#4a7c59] text-white font-bold py-3 rounded-lg hover:bg-[#3d664a] transition-colors shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
             >
-              Close
+              Schließen
             </button>
           </div>
         </div>
@@ -549,68 +578,110 @@ const ContactForm = () => {
 
 // --- Hauptabschnitte ---
 
-const Hero = () => (
-  <div className="relative min-h-screen w-full overflow-visible pb-12">
-    {/* Hintergrundbild mit langsamer Zoom-Effekt */}
-    <div
-      className="absolute inset-0 bg-cover bg-center animate-slow-zoom"
-      style={{ backgroundImage: `url(${img7})` }}
-    >
-      <div className="absolute inset-0 bg-black/40"></div>
-      <div className="absolute inset-0 bg-gradient-to-t from-earth-900/80 via-transparent to-black/20"></div>
+const HeroText = () => (
+  <div className="max-w-2xl text-center lg:text-left">
+    <div className="overflow-hidden mb-2">
+      <p className="text-gold-500 font-bold tracking-[0.3em] uppercase text-xs md:text-sm animate-[fadeInUp_1s_ease-out_forwards]">
+
+      </p>
     </div>
+    <h1 className="text-4xl md:text-6xl lg:text-7xl xl:text-8xl font-serif text-white leading-[1.1] drop-shadow-2xl mb-6 md:mb-8 animate-[fadeInUp_1.2s_ease-out_forwards]">
+      TedBruk
+      <br />
+      <span className="italic font-light text-gold-400">Pflasterarbeiten</span>
+    </h1>
 
-    {/* Inhalt */}
-    <div className="relative h-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col justify-center z-10 pt-32 md:pt-40 lg:pt-48">
-      <div className="flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-12">
-        <div className="max-w-2xl text-center lg:text-left">
-          <div className="overflow-hidden mb-2">
-            <p className="text-gold-500 font-bold tracking-[0.3em] uppercase text-xs md:text-sm animate-[fadeInUp_1s_ease-out_forwards]">
+    <p className="text-lg md:text-xl text-gray-200 font-light max-w-2xl border-l-2 border-gold-500 pl-4 md:pl-6 mb-8 md:mb-10 animate-[fadeInUp_1.4s_ease-out_forwards] mx-auto lg:mx-0">
+      Professionelle Pflasterarbeiten aus Polen für Cottbus, Guben, Spremberg und Forst. Qualität, Zuverlässigkeit und faire Preise.
+    </p>
 
-            </p>
-          </div>
-          <h1 className="text-4xl md:text-6xl lg:text-7xl xl:text-8xl font-serif text-white leading-[1.1] drop-shadow-2xl mb-6 md:mb-8 animate-[fadeInUp_1.2s_ease-out_forwards]">
-            Premium Contracting
-            <br />
-            <span className="italic font-light text-gold-400">Services</span>
-          </h1>
+    <div className="flex flex-col sm:flex-row gap-4 md:gap-5 animate-[fadeInUp_1.6s_ease-out_forwards] justify-center lg:justify-start">
+      <Link
+        to={NavigationLinks.SERVICES}
+        className="px-6 md:px-10 py-3 md:py-4 bg-gold-500 hover:bg-gold-600 text-white font-bold tracking-widest uppercase transition-all duration-300 text-center shadow-xl hover:-translate-y-1 text-sm md:text-base"
+      >
+        Unsere Leistungen
+      </Link>
+      <Link
+        to={NavigationLinks.PROJECTS}
+        className="px-6 md:px-10 py-3 md:py-4 bg-transparent hover:bg-white/10 text-white border border-white/30 font-bold tracking-widest uppercase transition-all duration-300 text-center backdrop-blur-sm hover:-translate-y-1 text-sm md:text-base"
+      >
+        Projekte ansehen
+      </Link>
+    </div>
+  </div>
+);
 
-          <p className="text-lg md:text-xl text-gray-200 font-light max-w-2xl border-l-2 border-gold-500 pl-4 md:pl-6 mb-8 md:mb-10 animate-[fadeInUp_1.4s_ease-out_forwards] mx-auto lg:mx-0">
-            Castor Finishing provides comprehensive construction and finishing services: Renovation, Drywall, Flooring, and General Contracting. Contact us for a free quote.
-          </p>
+const Hero = () => (
+  <div>
+    {/* Desktop Layout */}
+    <div className="hidden lg:block relative min-h-screen w-full overflow-visible pb-12">
+      {/* Hintergrundbild mit langsamer Zoom-Effekt */}
+      <div
+        className="absolute inset-0 bg-cover bg-center animate-slow-zoom"
+        style={{ backgroundImage: `url(${img8})` }}
+      >
+        <div className="absolute inset-0 bg-black/40"></div>
+        <div className="absolute inset-0 bg-gradient-to-t from-earth-900/80 via-transparent to-black/20"></div>
+      </div>
 
-          <div className="flex flex-col sm:flex-row gap-4 md:gap-5 animate-[fadeInUp_1.6s_ease-out_forwards] justify-center lg:justify-start">
-            <Link
-              to={NavigationLinks.SERVICES}
-              className="px-6 md:px-10 py-3 md:py-4 bg-gold-500 hover:bg-gold-600 text-white font-bold tracking-widest uppercase transition-all duration-300 text-center shadow-xl hover:-translate-y-1 text-sm md:text-base"
-            >
-              Our Services
-            </Link>
-            <Link
-              to={NavigationLinks.PROJECTS}
-              className="px-6 md:px-10 py-3 md:py-4 bg-transparent hover:bg-white/10 text-white border border-white/30 font-bold tracking-widest uppercase transition-all duration-300 text-center backdrop-blur-sm hover:-translate-y-1 text-sm md:text-base"
-            >
-              View Projects
-            </Link>
-          </div>
-          {/* Mobiles Kontaktformular direkt unter den Buttons */}
-          <div className="lg:hidden mt-6 animate-[fadeInUp_1.6s_ease-out_forwards] px-4">
+      {/* Inhalt */}
+      <div className="relative h-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col justify-center z-10 pt-32 md:pt-40 lg:pt-48">
+        <div className="flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-12">
+          <HeroText />
+          {/* Kontaktformular rechts - für Desktop sichtbar */}
+          <div className="animate-[fadeInUp_1.6s_ease-out_forwards]">
             <ContactForm />
           </div>
         </div>
+      </div>
 
-        {/* Kontaktformular rechts - für Desktop sichtbar */}
-        <div className="hidden lg:block animate-[fadeInUp_1.6s_ease-out_forwards]">
-          <ContactForm />
+      {/* Scroll-Indikator */}
+      <div className="absolute bottom-6 md:bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce text-white/50">
+        <div className="flex flex-col items-center">
+          <span className="text-[10px] tracking-widest uppercase mb-2">Scroll</span>
+          <div className="w-px h-8 md:h-12 bg-white/50"></div>
         </div>
       </div>
     </div>
 
-    {/* Scroll-Indikator */}
-    <div className="absolute bottom-6 md:bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce text-white/50">
-      <div className="flex flex-col items-center">
-        <span className="text-[10px] tracking-widest uppercase mb-2">Scroll</span>
-        <div className="w-px h-8 md:h-12 bg-white/50"></div>
+    {/* Mobile Layout */}
+    <div className="lg:hidden w-full bg-white">
+      {/* Top Section: Image, Text, Arrows */}
+      <div className="relative h-screen flex flex-col justify-center pb-40">
+        <div
+          className="absolute inset-0 bg-cover bg-center animate-slow-zoom"
+          style={{ backgroundImage: `url(${img8})` }}
+        >
+          <div className="absolute inset-0 bg-black/40"></div>
+          <div className="absolute inset-0 bg-gradient-to-t from-earth-900/90 via-transparent to-black/20"></div>
+        </div>
+
+        <div className="relative z-10 px-4 sm:px-6 flex flex-col items-center justify-center h-full pt-20">
+          <HeroText />
+        </div>
+
+        {/* Downward Arrows */}
+        <div className="absolute bottom-16 left-0 right-0 z-20 flex justify-center pointer-events-none">
+          <img
+            src={img13}
+            alt="Scroll Down"
+            className="w-36 h-auto object-contain drop-shadow-lg"
+          />
+        </div>
+
+
+
+
+
+
+
+      </div>
+      {/* Bottom Section: White Background Contact Form */}
+      <div className="bg-white px-4 py-16" >
+
+
+        <ContactForm variant="light" showLogo={true} />
       </div>
     </div>
   </div>
@@ -620,23 +691,23 @@ const ServicesSection = () => {
   const services = [
     {
       icon: <PencilRuler className="w-6 h-6 md:w-8 md:h-8" />,
-      title: "Renovation",
-      desc: "Modern renovation services for your home."
+      title: "Pflasterarbeiten",
+      desc: "Professionelle Verlegung von Pflastersteinen für Einfahrten und Wege."
     },
     {
       icon: <Shovel className="w-6 h-6 md:w-8 md:h-8" />,
-      title: "Flooring",
-      desc: "Professional flooring installation."
+      title: "Terrassenbau",
+      desc: "Hochwertige Terrassen aus Stein und Pflaster."
     },
     {
       icon: <Leaf className="w-6 h-6 md:w-8 md:h-8" />,
-      title: "Drywall",
-      desc: "High-quality drywall installation and finishing."
+      title: "Hofbefestigung",
+      desc: "Stabile und langlebige Befestigung von Höfen."
     },
     {
       icon: <Leaf className="w-6 h-6 md:w-8 md:h-8" />,
-      title: "General Contracting",
-      desc: "Support for all your construction needs."
+      title: "Gartenwege",
+      desc: "Gestaltung schöner und funktionaler Gartenwege."
     }
   ];
 
@@ -646,7 +717,7 @@ const ServicesSection = () => {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <RevealOnScroll>
-          <SectionTitle subtitle="Our Services" title="Quality Craftsmanship" />
+          <SectionTitle subtitle="Unsere Leistungen" title="Qualität & Handwerk" />
         </RevealOnScroll>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
@@ -678,44 +749,44 @@ const AboutPreview = () => (
             <div className="absolute -top-4 -left-4 md:-top-6 md:-left-6 w-full h-full border border-gold-500/30 z-0"></div>
             <img
               src={img7}
-              alt="Arbeiten von Bauservice Wendland"
+              alt="TedBruk Pflasterarbeiten"
               className="relative z-10 w-full h-[400px] md:h-[600px] object-cover shadow-2xl"
             />
             <div className="absolute -bottom-6 -right-6 md:-bottom-10 md:-right-10 bg-white text-earth-900 p-4 md:p-8 shadow-xl max-w-xs hidden lg:block z-20">
-              <p className="font-serif text-lg md:text-2xl italic">"Professional, reliable, and precise craftsmanship."</p>
-              <p className="text-right mt-2 md:mt-4 font-bold text-gold-600 text-xs md:text-sm tracking-widest">— Castor Finishing</p>
+              <p className="font-serif text-lg md:text-2xl italic">"Professionell, zuverlässig und präzise Handwerkskunst."</p>
+              <p className="text-right mt-2 md:mt-4 font-bold text-gold-600 text-xs md:text-sm tracking-widest">— TedBruk</p>
             </div>
           </div>
         </RevealOnScroll>
 
         <div className="lg:w-1/2 space-y-6 md:space-y-8 mt-8 lg:mt-0">
           <RevealOnScroll delay={200}>
-            <span className="text-gold-500 font-bold tracking-[0.2em] text-xs uppercase">Our Philosophy</span>
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-serif mt-4 leading-tight">Tradition of <span className="text-gold-500 italic">Craftsmanship</span></h2>
+            <span className="text-gold-500 font-bold tracking-[0.2em] text-xs uppercase">Unsere Philosophie</span>
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-serif mt-4 leading-tight">Tradition des <span className="text-gold-500 italic">Handwerks</span></h2>
 
             <p className="text-gray-300 text-base md:text-lg font-light leading-relaxed mt-4 md:mt-6">
-              We are your reliable contractors. We handle renovation, flooring, drywall, and all construction work around your house — clean, punctual, and professional.
+              Wir sind Ihr zuverlässiger Partner für Pflasterarbeiten. Wir kümmern uns um Einfahrten, Terrassen, Hofbefestigungen und Gartenwege — sauber, pünktlich und professionell.
             </p>
 
             {/* Unternehmensteil */}
             <div className="flex items-center gap-4 md:gap-6 p-4 md:p-6 bg-white/5 border border-white/10 rounded-sm mt-6 md:mt-8 backdrop-blur-sm hover:bg-white/10 transition-colors">
               <img
-                src={img12}
-                alt="Logo Castor Finishing"
+                src={img14}
+                alt="TedBruk Logo"
                 className="w-32 h-24 md:w-35 md:h-24 object-cover border-2 border-gold-500 shadow-md"
               />
               <div>
-                <h4 className="text-lg md:text-xl font-serif text-white">Wil Zacharias</h4>
-                <p className="text-gold-500 text-xs font-bold uppercase tracking-widest mb-1 md:mb-2">Contractor</p>
-                <p className="text-gray-400 text-xs italic">"Reliable, expert, and all-in-one solutions."</p>
+                <h4 className="text-lg md:text-xl font-serif text-white">Przemysław Żeletko</h4>
+                <p className="text-gold-500 text-xs font-bold uppercase tracking-widest mb-1 md:mb-2">Geschäftsführer</p>
+                <p className="text-gray-400 text-xs italic">"Zuverlässig, fachkundig und komplette Lösungen."</p>
               </div>
             </div>
 
             <div className="space-y-4 md:space-y-6 mt-6 md:mt-8">
               {[
-                { title: "Professional Execution", desc: "Careful work with long-lasting materials." },
-                { title: "Fast Implementation", desc: "Reliable deadlines and clean sites." },
-                { title: "Tailored Solutions", desc: "Individual concepts for your project." }
+                { title: "Professionelle Ausführung", desc: "Sorgfältige Arbeit mit langlebigen Materialien." },
+                { title: "Schnelle Umsetzung", desc: "Zuverlässige Termine und saubere Baustellen." },
+                { title: "Maßgeschneiderte Lösungen", desc: "Individuelle Konzepte für Ihr Projekt." }
               ].map((item, i) => (
                 <div key={i} className="flex">
                   <div className="mt-1 mr-3 md:mr-4 text-gold-500 shrink-0"><CheckCircle size={20} className="md:w-6 md:h-6" /></div>
@@ -729,7 +800,7 @@ const AboutPreview = () => (
 
             <div className="pt-6 md:pt-8">
               <Link to={NavigationLinks.ABOUT} className="inline-flex items-center text-gold-500 hover:text-white uppercase tracking-widest font-bold text-sm transition-colors border-b border-gold-500 pb-1 hover:border-white">
-                Learn more about us <ArrowRight className="ml-2" size={16} />
+                Mehr über uns <ArrowRight className="ml-2" size={16} />
               </Link>
             </div>
           </RevealOnScroll>
@@ -820,12 +891,12 @@ const AnimationStyles = () => (
 const Testimonials = () => {
   const [currentPage, setCurrentPage] = useState(0);
 
-  const googleMapsUrl = "https://www.google.com/maps?q=8+Tanager+Way,+Winkler,+MB+R6M+0E7,+Canada&z=19&output=embed";
+  const googleMapsUrl = "https://www.google.com/maps?q=Datyń+44,+Żary,+Poland&z=19&output=embed";
 
   const allReviews = [
-    { name: "Hans Peter Wagner", time: "3 months ago", text: "Our house flooded due to the hot water tank splitting and a lot of our drywall had to get cut. They were extremely efficient coming to do the taping as soon as the drywall had been replaced. Super easy to work with and did a great job!" },
-    { name: "Michael Bergmann", time: "6 months ago", text: "Exceptional service! They transformed our old living space into something modern and beautiful. The attention to detail in the flooring and trim work was outstanding." },
-    { name: "Aaron Zacharias", time: "4 years ago", text: " Reactivity, Quality, Professionalism, PriceServices Painting of interior surfaces, Repair of plasterboar " },
+    { name: "Michael Bungenberg", time: "vor 3 Jahren", text: "Schnelle, saubere Arbeit. Freundlich. Spricht Deutsch und Englisch ausreichend." },
+    { name: "Janusz Grudzień", time: "vor 6 Monaten", text: "Hervorragende Pflasterarbeiten! TedBruk hat unsere Einfahrt professionell verlegt. Pünktlich, sauber und zu einem fairen Preis. Sehr empfehlenswert!" },
+    { name: "Mariusz Szydłowski", time: "vor 4 Jahren", text: "Sehr zufrieden mit der Terrassengestaltung. Qualität stimmt, Termine wurden eingehalten. Gerne wieder!" },
   ];
 
   const itemsPerPage = 3;
@@ -842,7 +913,7 @@ const Testimonials = () => {
       }}></div>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <RevealOnScroll>
-          <SectionTitle subtitle="Google Reviews" title="What our clients say" />
+          <SectionTitle subtitle="Google Bewertungen" title="Was unsere Kunden sagen" />
         </RevealOnScroll>
 
         {/* Reviews Grid */}
@@ -868,7 +939,7 @@ const Testimonials = () => {
                       <div className="relative group">
                         <img src="https://img.icons8.com/?size=100&id=SRJUuaAShjVD&format=png&color=000000" alt="Verified Badge" className="w-4 h-4" />
                         <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 bg-black text-white text-xs px-2 py-1 rounded whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none z-10">
-                          Verified Customer
+                          Verifizierter Kunde
                         </div>
                       </div>
                     </div>
@@ -909,7 +980,7 @@ const Testimonials = () => {
             disabled={currentPage === 0}
             className="px-6 py-2 md:py-3 bg-earth-900 text-white font-bold uppercase tracking-widest rounded-lg hover:bg-gold-500 hover:text-earth-900 disabled:bg-gray-300 disabled:cursor-not-allowed transition-all text-sm md:text-base"
           >
-            ← Back
+            ← Zurück
           </button>
 
           <div className="flex gap-2">
@@ -932,14 +1003,14 @@ const Testimonials = () => {
             disabled={currentPage === totalPages - 1}
             className="px-6 py-2 md:py-3 bg-earth-900 text-white font-bold uppercase tracking-widest rounded-lg hover:bg-gold-500 hover:text-earth-900 disabled:bg-gray-300 disabled:cursor-not-allowed transition-all text-sm md:text-base"
           >
-            Next →
+            Weiter →
           </button>
         </div>
 
         {/* Google Badge */}
         <div className="mt-12 text-center">
           <p className="text-gray-600 text-sm md:text-base">
-            <span className="font-bold">Google</span> Reviews – Average: ⭐⭐⭐⭐⭐
+            <span className="font-bold">Google</span> Bewertungen – Durchschnitt: ⭐⭐⭐⭐⭐
           </p>
         </div>
       </div>
@@ -950,14 +1021,14 @@ const Testimonials = () => {
 const InteractiveMap = () => (
   <div className="w-full h-[300px] md:h-[500px] relative">
     <iframe
-      src="https://www.google.com/maps?q=8+Tanager+Way,+Winkler,+MB+R6M+0E7,+Canada&z=19&output=embed"
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2478.8!2d15.166389!3d51.616111!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x470f7e0e0e0e0e0f%3A0x0!2sDaty%C5%84%2044%2C%2068-200%20%C5%BBary%2C%20Poland!5e0!3m2!1sde!2spl!4v1735841137!5m2!1sde!2spl"
       width="100%"
       height="100%"
       style={{ border: 0 }}
       allowFullScreen
       loading="lazy"
       referrerPolicy="no-referrer-when-downgrade"
-      title="Castor Finishing Location"
+      title="TedBruk Standort - Datyń, Polen"
       className="transition-all duration-700"
     ></iframe>
   </div>
@@ -996,7 +1067,7 @@ const ServicesPage = () => (
     <PageHeader
       title="Our Services"
       subtitle="Craftsmanship & Quality"
-      image={img7}
+      image={img8}
     />
     <ServicesSection />
     <section className="py-12 md:py-20 bg-earth-900 text-center text-white">
@@ -1017,7 +1088,7 @@ const ProjectsPage = () => (
     <PageHeader
       title="Projects"
       subtitle="Inspirations & Realizations"
-      image={img7}
+      image={img8}
     />
     <ProjectsGallery />
     <div className="bg-stone-50 py-12 md:py-20">
@@ -1031,9 +1102,9 @@ const ProjectsPage = () => (
 const AboutPage = () => (
   <>
     <PageHeader
-      title="About Us"
-      subtitle="Our History"
-      image={img7}
+      title="Über uns"
+      subtitle="Unsere Geschichte"
+      image={img8}
     />
     <section className="py-16 md:py-24 bg-white relative overflow-hidden">
 
@@ -1051,61 +1122,61 @@ const AboutPage = () => (
               />
             </div>
             <div className="mt-4 md:mt-6 text-center">
-              <h4 className="text-xl md:text-2xl font-serif text-earth-900">Wil Zacharias</h4>
-              <p className="text-gold-500 text-xs md:text-sm font-bold uppercase tracking-widest">Proprietor / Contact Person</p>
+              <h4 className="text-xl md:text-2xl font-serif text-earth-900">Your name here</h4>
+              <p className="text-gold-500 text-xs md:text-sm font-bold uppercase tracking-widest">Geschäftsführer / Ansprechpartner</p>
             </div>
           </div>
 
-          <h3 className="text-2xl md:text-3xl font-serif text-earth-900 mb-4 md:mb-6 text-center">Company Profile & Services</h3>
+          <h3 className="text-2xl md:text-3xl font-serif text-earth-900 mb-4 md:mb-6 text-center">Firmenprofil & Leistungen</h3>
           <p className="leading-loose text-gray-600 mb-4 md:mb-6 text-sm md:text-base">
-            Castor Finishing is a regional, comprehensive construction and finishing company. We specialize in professional, reliable, and high-quality work for private and commercial projects. Our complete range of services ensures that customers can handle many aspects of their construction project through a single, trustworthy contact person.
+            TedBruk ist Ihr professioneller Partner für hochwertige Pflasterarbeiten aus Polen. Wir sind spezialisiert auf die Verlegung von Pflastersteinen, Terrassenbau und Hofbefestigungen in Cottbus, Guben, Spremberg und Forst. Mit langjähriger Erfahrung und Fachkompetenz garantieren wir erstklassige Qualität zu fairen Preisen.
           </p>
 
-          <h4 className="text-lg font-serif text-earth-900 mt-4">Our Core Services</h4>
+          <h4 className="text-lg font-serif text-earth-900 mt-4">Unsere Kernleistungen</h4>
           <ul className="list-disc list-inside text-gray-600 mb-4">
-            <li><strong>Renovation & Refurbishment:</strong> Complete modernization of interiors, including kitchens and bathrooms, as well as comprehensive refurbishment work.</li>
-            <li><strong>Drywall & Interior Fitting:</strong> Erection of lightweight walls, paneling of walls and ceilings, insulation work, and installation of suspended ceilings.</li>
-            <li><strong>Flooring:</strong> Professional installation of various floor coverings such as laminate, vinyl, design floors (LVT), as well as tiles and natural stone.</li>
-            <li><strong>Paving & Landscaping:</strong> Planning and laying of terraces, walkways, and driveways, as well as general garden maintenance and outdoor construction projects.</li>
-            <li><strong>Building Maintenance:</strong> Ongoing or order-related maintenance and servicing for residential complexes or commercial properties, including minor repairs.</li>
-            <li><strong>Minor Repairs & Assembly:</strong> Assembly and installation service for furniture, doors, windows, and shelving.</li>
+            <li><strong>Pflasterarbeiten:</strong> Professionelle Verlegung von Pflastersteinen für Einfahrten, Wege und Plätze.</li>
+            <li><strong>Terrassenbau:</strong> Gestaltung und Bau hochwertiger Terrassen aus Stein und Pflaster.</li>
+            <li><strong>Hofbefestigung:</strong> Stabile und langlebige Befestigung von Höfen und Parkplätzen.</li>
+            <li><strong>Gartenwege:</strong> Planung und Anlage schöner und funktionaler Gartenwege.</li>
+            <li><strong>Außenanlagen:</strong> Komplette Gestaltung von Außenbereichen und Grundstücken.</li>
+            <li><strong>Natursteinarbeiten:</strong> Verarbeitung von Natursteinen für exklusive Projekte.</li>
           </ul>
 
-          <h4 className="text-lg font-serif text-earth-900 mt-2">Our Company Values</h4>
+          <h4 className="text-lg font-serif text-earth-900 mt-2">Unsere Unternehmenswerte</h4>
           <ul className="list-disc list-inside text-gray-600 mb-4">
-            <li><strong>Reliability & Expertise:</strong> Meeting deadlines and delivering high-quality, clean work.</li>
-            <li><strong>All-in-One Principle:</strong> Seamless, comprehensive solutions for construction and maintenance projects.</li>
-            <li><strong>Fair & Transparent Pricing:</strong> Detailed offers without hidden costs.</li>
-            <li><strong>Individual Consultation:</strong> Detailed initial consultation and tailored solutions.</li>
-            <li><strong>Flexibility:</strong> Projects of any scale — from small installations to comprehensive renovations.</li>
+            <li><strong>Zuverlässigkeit & Fachkompetenz:</strong> Termintreue und hochwertige, saubere Arbeit.</li>
+            <li><strong>Qualität aus Polen:</strong> Erstklassige Handwerkskunst zu fairen Preisen.</li>
+            <li><strong>Faire & transparente Preise:</strong> Detaillierte Angebote ohne versteckte Kosten.</li>
+            <li><strong>Individuelle Beratung:</strong> Ausführliche Erstberatung und maßgeschneiderte Lösungen.</li>
+            <li><strong>Flexibilität:</strong> Projekte jeder Größenordnung — von kleinen Wegen bis zu großen Anlagen.</li>
           </ul>
 
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 py-8 md:py-12 text-center border-y border-gray-200 my-8 md:my-12">
             <div>
-              <span className="block text-2xl md:text-4xl font-serif text-gold-500 mb-1 md:mb-2">7+</span>
-              <span className="text-xs uppercase tracking-widest text-gray-500">Years Experience</span>
+              <span className="block text-2xl md:text-4xl font-serif text-gold-500 mb-1 md:mb-2">10+</span>
+              <span className="text-xs uppercase tracking-widest text-gray-500">Jahre Erfahrung</span>
             </div>
             <div>
               <span className="block text-2xl md:text-4xl font-serif text-gold-500 mb-1 md:mb-2">100+</span>
-              <span className="text-xs uppercase tracking-widest text-gray-500">Realized Projects</span>
+              <span className="text-xs uppercase tracking-widest text-gray-500">Realisierte Projekte</span>
             </div>
             <div>
               <span className="block text-2xl md:text-4xl font-serif text-gold-500 mb-1 md:mb-2">100%</span>
-              <span className="text-xs uppercase tracking-widest text-gray-500">Customer Satisfaction</span>
+              <span className="text-xs uppercase tracking-widest text-gray-500">Kundenzufriedenheit</span>
             </div>
           </div>
 
           {/* Kontaktbereich */}
           <div className="bg-stone-50 p-6 md:p-8 rounded-lg mt-8 md:mt-12">
-            <h4 className="text-xl font-serif text-earth-900 mb-4 text-center">Contact</h4>
+            <h4 className="text-xl font-serif text-earth-900 mb-4 text-center">Kontakt</h4>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-center">
               <div>
                 <Phone className="w-6 h-6 text-gold-500 mx-auto mb-2" />
-                <a href="tel:+12043848706" className="text-earth-900 hover:text-gold-500 transition-colors font-bold">+1 (204) 384-8706</a>
+                <a href="tel:+48669631919" className="text-earth-900 hover:text-gold-500 transition-colors font-bold">+48 669 631 919</a>
               </div>
               <div>
                 <Send className="w-6 h-6 text-gold-500 mx-auto mb-2" />
-                <a href="mailto:info@castorfinishing.com" className="text-earth-900 hover:text-gold-500 transition-colors">info@castorfinishing.com</a>
+                <a href="mailto:przemekzeletko@wp.pl" className="text-earth-900 hover:text-gold-500 transition-colors">przemekzeletko@wp.pl</a>
               </div>
             </div>
           </div>
@@ -1119,9 +1190,9 @@ const AboutPage = () => (
 const ContactPage = () => (
   <>
     <PageHeader
-      title="Contact"
-      subtitle="Consultation & Inquiries"
-      image={img7}
+      title="Kontakt"
+      subtitle="Beratung & Anfragen"
+      image={img8}
     />
 
     {/* Detaillierter Kontaktbereich */}
@@ -1131,31 +1202,31 @@ const ContactPage = () => (
           {/* Kontaktinformationen */}
           <div>
             <RevealOnScroll>
-              <SectionTitle subtitle="Contact Us" title="Your Inquiry" align="left" />
+              <SectionTitle subtitle="Kontaktieren Sie uns" title="Ihre Anfrage" align="left" />
             </RevealOnScroll>
 
             <div className="space-y-6 md:space-y-8">
               <div className="flex items-start">
                 <MapPin className="text-gold-500 mt-1 mr-4 shrink-0" size={24} />
                 <div>
-                  <h4 className="font-serif text-lg text-earth-900 mb-2">Our Location</h4>
-                  <p className="text-gray-600">8 Tanager Way, Winkler, MB R6M 0E7, Canada<br />Serving Manitoba</p>
+                  <h4 className="font-serif text-lg text-earth-900 mb-2">Unser Standort</h4>
+                  <p className="text-gray-600">Datyń 44, Żary, Polen<br />Wir bedienen: Cottbus, Guben, Spremberg, Forst</p>
                 </div>
               </div>
 
               <div className="flex items-start">
                 <Phone className="text-gold-500 mt-1 mr-4 shrink-0" size={24} />
                 <div>
-                  <h4 className="font-serif text-lg text-earth-900 mb-2">Phone</h4>
-                  <a href="tel:+12043848706" className="text-earth-900 hover:text-gold-500 transition-colors font-bold text-lg">+1 (204) 384-8706</a>
+                  <h4 className="font-serif text-lg text-earth-900 mb-2">Telefon</h4>
+                  <a href="tel:+48669631919" className="text-earth-900 hover:text-gold-500 transition-colors font-bold text-lg">+48 669 631 919</a>
                   <div className="text-gray-600 text-sm mt-2 space-y-1">
-                    <p><strong>Regular Hours:</strong></p>
-                    <p>Mon - Tue: 09:00 – 17:00</p>
-                    <p>Sat - Sun: 09:00 – 17:00</p>
-                    <p className="mt-2"><strong>Holiday Hours:</strong></p>
-                    <p>Wed (Christmas Eve): 09:00 – 17:00 (Hours may differ)</p>
-                    <p>Thu (Christmas Day): 09:00 – 17:00 (Hours may differ)</p>
-                    <p>Fri (Boxing Day): 09:00 – 17:00 (Hours may differ)</p>
+                    <p><strong>Öffnungszeiten:</strong></p>
+                    <p>Mo - Fr: 07:00 – 18:00</p>
+                    <p>Sa: 08:00 – 14:00</p>
+                    <p className="mt-2"><strong>Sonntag:</strong></p>
+                    <p>Geschlossen</p>
+                    <p className="mt-2 text-xs italic">Termine nach Vereinbarung möglich</p>
+                    <p></p>
                   </div>
                 </div>
               </div>
@@ -1163,14 +1234,14 @@ const ContactPage = () => (
               <div className="flex items-start">
                 <Send className="text-gold-500 mt-1 mr-4 shrink-0" size={24} />
                 <div>
-                  <h4 className="font-serif text-lg text-earth-900 mb-2">Email</h4>
-                  <a href="mailto:info@castorfinishing.com" className="text-earth-900 hover:text-gold-500 transition-colors">info@castorfinishing.com</a>
+                  <h4 className="font-serif text-lg text-earth-900 mb-2">E-Mail</h4>
+                  <a href="mailto:przemekzeletko@wp.pl" className="text-earth-900 hover:text-gold-500 transition-colors">przemekzeletko@wp.pl</a>
                 </div>
               </div>
 
               {/* Soziale Medien */}
               <div className="pt-6">
-                <h4 className="font-serif text-lg text-earth-900 mb-4">Follow Us</h4>
+                <h4 className="font-serif text-lg text-earth-900 mb-4">Folgen Sie uns</h4>
                 <div className="flex space-x-4">
                   <a
                     href="https://www.facebook.com/profile.php?id=61584302041280"
@@ -1521,7 +1592,7 @@ const FullGalleryPage = () => {
       <PageHeader
         title="Our Gallery"
         subtitle="Elegant Projects"
-        image={img7}
+        image={img8}
       />
 
       <section className="py-16 md:py-24 bg-white relative overflow-hidden">
@@ -1697,7 +1768,7 @@ const App = () => {
           </div>
 
           <a
-            href="https://wa.me/12043848706"
+            href="https://wa.me/+48 669 631 919"
             target="_blank"
             rel="noopener noreferrer"
             className="bg-white p-3 rounded-full shadow-lg hover:scale-110 transition-transform pointer-events-auto relative group"

@@ -24,12 +24,12 @@ const Navbar: React.FC = () => {
   const hoverColor = 'text-gold-500';
 
   const navLinks = [
-    { name: 'Home', path: NavigationLinks.HOME },
-    { name: 'Services', path: NavigationLinks.SERVICES },
-    { name: 'Projects', path: NavigationLinks.PROJECTS },
-    { name: 'Gallery', path: NavigationLinks.GALLERY },
-    { name: 'About Us', path: NavigationLinks.ABOUT },
-    { name: 'Contact', path: NavigationLinks.CONTACT },
+    { name: 'Startseite', path: NavigationLinks.HOME },
+    { name: 'Leistungen', path: NavigationLinks.SERVICES },
+    { name: 'Projekte', path: NavigationLinks.PROJECTS },
+    { name: 'Galerie', path: NavigationLinks.GALLERY },
+    { name: 'Über uns', path: NavigationLinks.ABOUT },
+    { name: 'Kontakt', path: NavigationLinks.CONTACT },
   ];
 
   return (
@@ -42,7 +42,7 @@ const Navbar: React.FC = () => {
               <div className={`flex items-center ${logoColor} group-hover:${hoverColor} transition-colors`}>
 
                 <div className="flex flex-col">
-                  <span className="text-lg font-serif font-bold leading-none"> Castor Finishing </span>
+                  <span className="text-2xl md:text-3xl font-serif font-bold leading-none">TedBruk</span>
                 </div>
               </div>
             </Link>
@@ -63,11 +63,11 @@ const Navbar: React.FC = () => {
 
             {/* Kontakt - Desktop */}
             <div className="hidden md:flex items-center space-x-4 lg:space-x-6 pl-4 lg:pl-8 lg:border-l lg:border-white/20">
-              <a href="tel:+12043848706" className="flex items-center text-gold-500 hover:text-white transition-colors group">
+              <a href="tel:+48669631919" className="flex items-center text-gold-500 hover:text-white transition-colors group">
                 <div className="w-8 h-8 rounded-full border border-gold-500 flex items-center justify-center mr-3 group-hover:bg-gold-500 group-hover:text-earth-900 transition-all">
                   <Phone size={14} />
                 </div>
-                <span className={`text-sm font-bold tracking-wide ${textColor} group-hover:text-gold-500 transition-colors`}>+1 (204) 384-8706
+                <span className={`text-sm font-bold tracking-wide ${textColor} group-hover:text-gold-500 transition-colors`}>+48 669 631 919
 
                 </span>
               </a>
@@ -97,12 +97,12 @@ const Navbar: React.FC = () => {
             ))}
 
             <div className="mt-12 flex flex-col items-center space-y-4 border-t border-white/10 pt-12 w-48">
-              <a href="mailto:info@castorfinishing.com" className="flex flex-col items-center text-gold-500">
-                <span className="text-xl font-serif text-white">info@castorfinishing.com</span>
+              <a href="mailto:przemekzeletko@wp.pl" className="flex flex-col items-center text-gold-500">
+                <span className="text-xl font-serif text-white">przemekzeletko@wp.pl</span>
               </a>
-              <a href="tel:+12043848706" className="flex flex-col items-center text-gold-500">
+              <a href="tel:+48669631919" className="flex flex-col items-center text-gold-500">
                 <Phone size={32} className="mb-2" />
-                <span className="text-xl font-serif text-white">+1 (204) 384-8706</span>
+                <span className="text-xl font-serif text-white">+48 669 631 919</span>
               </a>
             </div>
           </div>
