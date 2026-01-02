@@ -132,13 +132,13 @@ const blogPosts: BlogPost[] = [
     slug: 'professional-lawn-care-garden-maintenance',
     title: '',
     image: img1,
-    excerpt: 'At Castor Finishing, we understand that a flawless lawn is the foundation of your beautiful outdoor area. Our comprehensive weekly lawn care and garden maintenance program ensures your lawn and garden remain lush, healthy, and perfectly maintained throughout the year.',
+    excerpt: 'At TedBruk, we understand that a flawless lawn is the foundation of your beautiful outdoor area. Our comprehensive weekly lawn care and garden maintenance program ensures your lawn and garden remain lush, healthy, and perfectly maintained throughout the year.',
     story: [
-      'At Castor Finishing, we recognize the importance of a flawless lawn as the foundation of your beautiful outdoor area. Our comprehensive weekly lawn care and garden maintenance program includes our proven fertilization and weed control strategy to ensure your lawn and garden remain lush, healthy, and perfectly maintained all year round.',
+      'At TedBruk, we recognize the importance of a flawless lawn as the foundation of your beautiful outdoor area. Our comprehensive weekly lawn care and garden maintenance program includes our proven fertilization and weed control strategy to ensure your lawn and garden remain lush, healthy, and perfectly maintained all year round.',
       'This program also offers a choice of seasonal services – choose between winter pruning, spring jumpstart, mulch installation, summer refresh, or fall cleanup – to further enhance and maintain the beauty and health of your garden with sustainable practices.',
 
       '## Lawn Mowing – The Foundation of Lawn Care',
-      'A well-mowed lawn goes beyond simple aesthetics; it is crucial for the health and vitality of your grass. At Castor Finishing, we follow optimal mowing practices and keep our cutting heights between 3 and 5 cm to promote a dense, robust lawn.',
+      'A well-mowed lawn goes beyond simple aesthetics; it is crucial for the health and vitality of your grass. At TedBruk, we follow optimal mowing practices and keep our cutting heights between 3 and 5 cm to promote a dense, robust lawn.',
       'We use sharp blades for clean, precise cuts that prevent damage to the grass blades and reduce the risk of disease. Our mowing patterns are strategically varied to avoid soil compaction and promote the natural decomposition of grass clippings, enriching your lawn with essential nutrients.',
       'Additionally, our edging technique ensures a polished, well-groomed appearance that defines your planting beds and highlights the overall beauty of your garden.',
 
@@ -160,8 +160,8 @@ const blogPosts: BlogPost[] = [
       '• **Fall Cleanup**: Prepare your garden for winter with a thorough cleaning.',
       'This customizable approach allows you to tailor our services to the specific needs of your garden ensuring optimal care and beauty year-round.',
 
-      '## Why Choose Castor Finishing?',
-      'When you choose Castor Finishing for your weekly lawn care, you are not just getting a service; you are investing in the health and beauty of your outdoor space. Our dedicated team is committed to providing you with the highest level of care.',
+      '## Why Choose TedBruk?',
+      'When you choose TedBruk for your weekly lawn care, you are not just getting a service; you are investing in the health and beauty of your outdoor space. Our dedicated team is committed to providing you with the highest level of care.',
       'Partner with us and choose a company that values the beauty and health of your property as much as you do. Contact us today to learn more about our services.'
     ],
     tips: [
@@ -193,7 +193,7 @@ const blogPosts: BlogPost[] = [
     image: img7,
     excerpt: 'Discover how we created a safe family garden with a modern chain-link fence, perfect lawn, and natural planting.',
     story: [
-      'Hello, I am Andre from Castor Finishing – your expert contractor with regional expertise.',
+      'Hello, I am Przemysław from TedBruk – your expert contractor with regional expertise.',
       'Today I want to show you a project that combines family friendliness, safety, and natural beauty in perfect harmony. This garden is not a coincidence – it is the result of careful planning tailored exactly to the needs of a young family.',
       'A few months ago, a client approached me concerned about the safety of his garden. His child loved playing outside, and he wanted to ensure the area was enclosed – but without losing the garden\'s charm. Together we decided to install a modern, robust chain-link fence that is not only stable and durable but also fits harmoniously into the environment.',
       'The installation was a challenge, but that is exactly what makes my work so exciting. We aligned the posts precisely, mounted the fence panels carefully, and ensured every screw was tight. The result? A fence that not only delivers on its promise but also looks good.',
@@ -222,7 +222,7 @@ const blogPosts: BlogPost[] = [
     image: img9,
     excerpt: 'Discover how we transformed a modern garden with black privacy screens, a perfect lawn, and ambient lighting into a private oasis.',
     story: [
-      'Hello, I am Andre from Castor Finishing – your expert contractor.',
+      'Hello, I am Przemysław from TedBruk – your expert contractor.',
       'Today I want to show you a project that combines privacy, aesthetics, functionality, and atmosphere. This garden is the result of careful planning, tailored to the client\'s wishes.',
       'A client wanted peace and privacy. His garden bordered neighbors, and he wanted a place to relax without constant outside views.',
       'Together we chose a combined solution of a privacy fence and planting. The fence consists of black, vertically arranged wooden panels that are visually appealing and offer high privacy. Young roses and low hedges soften the look.',
@@ -251,12 +251,12 @@ const blogPosts: BlogPost[] = [
     image: img10,
     excerpt: 'Discover how a perfectly designed bed with mulch, blooming azaleas, and structured hedges transforms a garden into a glowing oasis of calm.',
     story: [
-      'Hello, I am Andre from Castor Finishing.',
+      'Hello, I am Przemysław from TedBruk.',
       'Today I want to show you a project that unites color, form, and functionality.',
       'A client wanted to create a place of relaxation. We chose a combined solution of privacy fencing and planting. Black wooden panels provide privacy, softened by roses and hedges.',
       'The lawn is a dream, laid to measure with drainage and stone edging.',
       'Lighting creates a warm atmosphere at night.',
-      'At Castor Finishing, we understand landscaping as the holistic design of your outdoor space.'
+      'At TedBruk, we understand landscaping as the holistic design of your outdoor space.'
     ],
     tips: [
       { title: 'Choose the Right Mulch', description: 'Wood mulch holds moisture and suppresses weeds.' },
@@ -282,7 +282,7 @@ const blogPosts: BlogPost[] = [
     image: img1,
     excerpt: 'Discover how we make public spaces like sports grounds safe and inviting. A green chain-link fence that harmoniously combines safety and nature.',
     story: [
-      'Hello, I am Andre from Castor Finishing.',
+      'Hello, I am Przemysław from TedBruk.',
       'Today I want to show you a project that makes public spaces safe: a fence around a sports ground. We build fences not just for private gardens but for schools, clubs, and sports facilities too.',
       'This fence is functional, robust, and harmoniously embedded in the environment. The green powder coating fits perfectly with the surroundings.',
       'We chose a green chain-link fence with stable posts, high enough to stop balls but maintaining a view. The installation was done with precision, ensuring longevity and safety.'
@@ -309,7 +309,7 @@ const blogPosts: BlogPost[] = [
     image: img1,
     excerpt: 'Experience the dramatic transformation of bare, dusty ground into a vibrant, green retreat. This before-and-after story shows how we created a perfect lawn.',
     story: [
-      'Hello! Andre from Castor Finishing here. Today I want to show you a project that demonstrates what true premium quality means: a metal fence that is not just functional, but makes a statement.',
+      'Hello! Przemysław from TedBruk here. Today I want to show you a project that demonstrates what true premium quality means: a metal fence that is not just functional, but makes a statement.',
       'A client wanted to secure their premises – but not with just any fence. They wanted something special that radiated quality and professionalism. We chose a high-quality custom metal fence.',
       'The challenge? Uneven terrain. We had to adapt the fence to the topography. We customized every post and aligned every panel perfectly.',
       'The result is a fence that is secure and impressive. The client was so satisfied they booked us for further projects.'
@@ -748,7 +748,7 @@ const AboutPreview = () => (
           <div className="relative w-full max-w-lg mx-auto lg:mx-0">
             <div className="absolute -top-4 -left-4 md:-top-6 md:-left-6 w-full h-full border border-gold-500/30 z-0"></div>
             <img
-              src={img7}
+              src={img8}
               alt="TedBruk Pflasterarbeiten"
               className="relative z-10 w-full h-[400px] md:h-[600px] object-cover shadow-2xl"
             />
@@ -1488,20 +1488,20 @@ const BlogPostPage = () => {
             <div className="mt-16 md:mt-20 p-8 md:p-12 bg-earth-900 text-white text-center rounded-lg">
               <h3 className="text-2xl md:text-3xl font-serif mb-4">Have questions or want to start a project?</h3>
               <p className="text-gray-300 mb-6 md:mb-8">
-                As your local contractor in Winkler, Canada, I am here to help with advice and action.
+                Als Ihr lokaler Handwerker in Żary, Polen, stehe ich Ihnen mit Rat und Tat zur Seite.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-                <a href="tel:+12043848706" className="inline-flex items-center px-8 py-4 bg-gold-500 hover:bg-gold-600 text-earth-900 font-bold uppercase tracking-widest transition-colors">
+                <a href="tel:+48669631919" className="inline-flex items-center px-8 py-4 bg-gold-500 hover:bg-gold-600 text-earth-900 font-bold uppercase tracking-widest transition-colors">
                   <Phone className="mr-2" size={20} />
-                  +1 (204) 384-8706
+                  +48 669 631 919
                 </a>
                 <Link to={NavigationLinks.CONTACT} className="inline-flex items-center px-8 py-4 border-2 border-white hover:bg-white hover:text-earth-900 font-bold uppercase tracking-widest transition-colors">
                   Contact Us
                 </Link>
               </div>
               <p className="mt-6 text-sm text-gray-400">
-                Castor Finishing<br />
-                8 Tanager Way, Winkler, MB R6M 0E7
+                TedBruk<br />
+                Datyń 44, Żary, Polen
               </p>
             </div>
           </RevealOnScroll>
@@ -1768,7 +1768,7 @@ const App = () => {
           </div>
 
           <a
-            href="https://wa.me/+48 669 631 919"
+            href="https://wa.me/+48669631919"
             target="_blank"
             rel="noopener noreferrer"
             className="bg-white p-3 rounded-full shadow-lg hover:scale-110 transition-transform pointer-events-auto relative group"
